@@ -1,0 +1,5 @@
+python>=3.9.6
+hpelm==1.0.9
+numpy
+pandas
+sklearn
