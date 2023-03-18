@@ -15,6 +15,7 @@ TEST_SIZE = 0.2  # TODO
 PH = 180
 FH = 30
 MODEL_CODE = "elm"
+
 # N_NEURONS = [20]
 N_NEURONS = [20, 50, 100, 150, 200]
 # ACTIVATION_FUNCTIONS = ["lin"]
@@ -96,8 +97,8 @@ for n_neurons in N_NEURONS:
         results.append(dict(
             mae_mean=mae_mean,
             mae_std=mae_std,
-            mse_mean=mape_mean,
-            mse_std=mape_std,
+            mape_mean=mape_mean,
+            mape_std=mape_std,
             duration=duration,
             params=params,
             id=i,
@@ -110,7 +111,4 @@ for n_neurons in N_NEURONS:
 
 # Write results
 with open(f"./results/{DATE}_{MODEL_CODE}.json", "w") as f:
-    json.dump(
-        results,
-        f
-    )
+    json.dump(results, f)
