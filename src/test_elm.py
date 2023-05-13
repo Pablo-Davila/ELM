@@ -11,7 +11,7 @@ from eval import prequential_mae, prequential_mape
 DATASET_DAY = "Variable"
 DATASET_PLACE = "Varennes"
 DATASET_FREC = "1000"
-TEST_SIZE = 0.2  # TODO
+TEST_SIZE = 0.2  # TODO Elegir test size
 PH = 180
 FH = 30
 MODEL_CODE = "elm"
@@ -77,28 +77,28 @@ for n_neurons in N_NEURONS:
         y_pred = model.predict(x_test)
 
         pmae = prequential_mae(max_value*y_test, max_value*y_pred)
-        mae_mean = np.mean(pmae)
-        mae_std = np.std(pmae)
+        pmae_mean = np.mean(pmae)
+        pmae_std = np.std(pmae)
 
         pmape = prequential_mape(max_value*y_test, max_value*y_pred)
-        mape_mean = np.mean(pmape)
-        mape_std = np.std(pmape)
+        pmape_mean = np.mean(pmape)
+        pmape_std = np.std(pmape)
 
         # Output results
         print(
-            f"{mae_mean=:.4f}",
-            f"{mae_std=:.4f}",
-            f"{mape_mean=:.4f}",
-            f"{mape_std=:.4f}",
+            f"{pmae_mean=:.4f}",
+            f"{pmae_std=:.4f}",
+            f"{pmape_mean=:.4f}",
+            f"{pmape_std=:.4f}",
             f"{duration=:.4f}",
         )
 
         # Save results
         results.append(dict(
-            mae_mean=mae_mean,
-            mae_std=mae_std,
-            mape_mean=mape_mean,
-            mape_std=mape_std,
+            pmae_mean=pmae_mean,
+            pmae_std=pmae_std,
+            pmape_mean=pmape_mean,
+            pmape_std=pmape_std,
             duration=duration,
             params=params,
             id=i,
