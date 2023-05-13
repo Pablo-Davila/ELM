@@ -103,8 +103,8 @@ for learning_rate in LEARNING_RATES:
         results.append(dict(
             pmae_mean=pmae_mean,
             pmae_std=pmae_std,
-            mse_mean=pmape_mean,
-            mse_std=pmape_std,
+            pmape_mean=pmape_mean,
+            pmape_std=pmape_std,
             duration=duration,
             params=params,
         ))
