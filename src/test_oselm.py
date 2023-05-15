@@ -34,12 +34,12 @@ x_data = np.load(f"{BASE_PATH}_{PH}ph_{FH}fh_x_train_{TEST_SIZE}.npy")
 y_data = np.load(f"{BASE_PATH}_{PH}ph_{FH}fh_y_train_{TEST_SIZE}.npy")
 
 # Perform tests
-i = 0
+count = 0
 results = []
 for n_neurons in N_NEURONS:
     for batch_size in BATCH_SIZES:
         for initial_train_factor in INITIAL_TRAIN_FACTORS:
-            print(i)
+            print(count)
 
             # Set model parameters
             params = dict(
@@ -156,7 +156,7 @@ for n_neurons in N_NEURONS:
             # # Save model
             # model.save(f"./models/{DATE}_{i:2d}_{MODEL_CODE}.model")
 
-            i += 1
+            count += 1
 
 # Write results
 with open(f"./results/{DATE}_{MODEL_CODE}.json", "w") as f:
