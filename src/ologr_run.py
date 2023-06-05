@@ -85,7 +85,7 @@ for initial_train_size in INITIAL_TRAIN_SIZES:
             )
             for x, y in data_initial:
                 model.learn_one(x, y)
-            pbar.update(n=x_initial.shape[0])
+                pbar.update(n=1)
 
             # Sequential train-test
             pbar.set_description("Sequential training phase")
