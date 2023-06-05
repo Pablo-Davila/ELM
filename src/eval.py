@@ -1,22 +1,33 @@
 
+from typing import Union, Dict
 import numpy as np
 
 
-def mae(y: np.ndarray, o: np.ndarray) -> float:
+def mae(y: Union[np.ndarray, Dict], o: Union[np.ndarray, Dict]) -> float:
+    if isinstance(y, dict):
+        y = np.array(list(y.values()))
+    if isinstance(o, dict):
+        o = np.array(list(o.values()))
+
     assert y.ndim == 1 or y.ndim == 2 and y.shape[0] == 1
     assert o.ndim == 1 or o.ndim == 2 and o.shape[0] == 1
 
     return np.mean(np.abs(y-o))
 
 
-def mape(y: np.ndarray, o: np.ndarray) -> float:
+def mape(y: Union[np.ndarray, Dict], o: Union[np.ndarray, Dict]) -> float:
+    if isinstance(y, dict):
+        y = np.array(list(y.values()))
+    if isinstance(o, dict):
+        o = np.array(list(o.values()))
+
     assert y.ndim == 1 or y.ndim == 2 and y.shape[0] == 1
     assert o.ndim == 1 or o.ndim == 2 and o.shape[0] == 1
 
     # TEMP Find a better solution for zero divisions
     res = np.abs((y-o) / y)
     res = np.where(
-        res==np.Infinity,
+        res == np.Infinity,
         np.zeros_like(res),
         res,
     )
