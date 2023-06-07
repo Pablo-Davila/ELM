@@ -53,6 +53,8 @@ for initial_train_size in INITIAL_TRAIN_SIZES:
             print(count)
 
             # Set model parameters
+            optimizer_log = "optim.SGD(0.01)"
+            loss_log = "optim.losses.Squared()"
             params = dict(
                 optimizer=optim.SGD(0.01),
                 loss=optim.losses.Squared(),
@@ -68,17 +70,14 @@ for initial_train_size in INITIAL_TRAIN_SIZES:
             model = multioutput.RegressorChain(
                 linear_model.LinearRegression(**params)
             )
-            # model = linear_model.LinearRegression(**params)  # TEMP
   
             # Split initial and sequential data
             assert initial_train_size <= x_data.shape[0]
             x_initial = x_data[:initial_train_size, :]
             y_initial = y_data[:initial_train_size, :]
-            # y_initial = y_data[:initial_train_size, 0].reshape(-1)  # TEMP
             data_initial = stream.iter_array(x_initial, y_initial)
             x_sequential = x_data[initial_train_size:, :]
             y_sequential = y_data[initial_train_size:, :]
-            # y_sequential = y_data[initial_train_size:, 0].reshape(-1)  # TEMP
             data_sequential = stream.iter_array(x_sequential, y_sequential)
 
             t0 = time.time()  # Timer start
@@ -105,13 +104,9 @@ for initial_train_size in INITIAL_TRAIN_SIZES:
                 # Evaluate model
                 yi = {k: max_value*e for k, e in y.items()}
                 oi = {k: max_value*e for k, e in model.predict_one(x).items()}
-                # yi = max_value * y  # TEMP
-                # oi = max_value * model.predict_one(x)  # TEMP
 
                 si_mae = mae(yi, oi) + ALPHA*si_mae
                 si_mape = mape(yi, oi) + ALPHA*si_mape
-                # si_mae = 0  # TEMP
-                # si_mape = 0  # TEMP
                 bi = 1 + ALPHA * bi
                 pmae.append(si_mae / bi)
                 pmape.append(si_mape / bi)
@@ -138,6 +133,8 @@ for initial_train_size in INITIAL_TRAIN_SIZES:
                 f"{duration=:.4f}",
             )
 
+            params["optimizer"] = optimizer_log
+            params["loss"] = loss_log
             results.append(dict(
                 pmae_mean=pmae_mean,
                 pmae_std=pmae_std,

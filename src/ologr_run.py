@@ -26,7 +26,7 @@ FH = 10
 # FH = 30  # For "Variable"
 # FH = 60  # For "Very variable"
 MODEL_CODE = "ologr"
-INITIAL_TRAIN_SIZES = [250, 450, 650]  
+INITIAL_TRAIN_SIZES = [250, 450, 650]
 L1S = [0.0001, 0.0010, 0.0100]
 INTERCEPT_LR = [0.0001, 0.0010, 0.0100]
 ALPHA = 0.99
@@ -53,6 +53,8 @@ for initial_train_size in INITIAL_TRAIN_SIZES:
             print(count)
 
             # Set model parameters
+            optimizer_log = "optim.SGD(0.01)"
+            loss_log = "optim.losses.Squared()"
             params = dict(
                 optimizer=optim.SGD(0.01),
                 loss=optim.losses.Squared(),
@@ -131,6 +133,8 @@ for initial_train_size in INITIAL_TRAIN_SIZES:
                 f"{duration=:.4f}",
             )
 
+            params["optimizer"] = optimizer_log
+            params["loss"] = loss_log
             results.append(dict(
                 pmae_mean=pmae_mean,
                 pmae_std=pmae_std,
