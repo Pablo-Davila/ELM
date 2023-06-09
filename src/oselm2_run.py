@@ -31,7 +31,7 @@ ACTIVATION_FUNCTIONS = [
     "tanh",
     "sine",
     "tribas",
-    "inv_tribase",
+    "inv_tribas",
     "sigmoid",
     "hardlim",
     "softlim",
