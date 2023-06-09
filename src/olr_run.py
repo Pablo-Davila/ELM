@@ -33,7 +33,7 @@ ALPHA = 0.99
 
 DATE = time.strftime("%Y-%m-%d_%H-%M", time.localtime())
 BASE_PATH = f"./data/{DATASET_DAY}/{DATASET_PLACE}_{DATASET_FREC}ms"
-OUT_PATH = f"./results/{DATASET_DAY}/{DATE}_{MODEL_CODE}.json"
+OUT_PATH = f"./results/{DATASET_DAY}/{DATE}_{MODEL_CODE}_ph{PH}_fh{FH}.json"
 
 
 # Read datasets
