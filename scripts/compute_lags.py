@@ -3,15 +3,19 @@ import numpy as np
 import pandas as pd
 
 
-# DATASET_DAY = "Variable"
-DATASET_DAY = "Very variable"
+DATASET_DAY = "Variable"
+# DATASET_DAY = "Very variable"
 DATASET_PLACE = "Varennes"
-# DATASET_FREC = "1000"  # For "Variable" (1 ins/s)
-DATASET_FREC = "500"  # For "Very variable" (2 ins/s)
+DATASET_FREC = "1000"  # For "Variable" (1 ins/s)
+# DATASET_FREC = "500"  # For "Very variable" (2 ins/s)
+PH = 100  # For "Variable"
 # PH = 180  # For "Variable"
-PH = 360  # For "Very variable"
+# PH = 200  # For "Very variable"
+# PH = 360  # For "Very variable"
+FH = 10  # For "Variable"
 # FH = 30  # For "Variable"
-FH = 60  # For "Very variable"
+# FH = 20  # For "Very variable"
+# FH = 60  # For "Very variable"
 # TEST_SIZE = 0.2  # For batch learning
 TEST_SIZE = 0.0  # For online learning
 
