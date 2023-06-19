@@ -27,10 +27,10 @@ FH = 10  # For "Variable"
 # FH = 30  # For "Variable"
 # FH = 20  # For "Very variable"
 # FH = 60  # For "Very variable"
-MODEL_CODE = "ologr"
+MODEL_CODE = "arf"
 INITIAL_TRAIN_SIZE = 2
-N_MODELS = [10, 50, 150]
-MAX_FEATURES = ["sqrt", None]
+N_MODELS = [15]
+MAX_DEPTH = [6, 10, 14]
 ALPHA = 0.99
 
 DATE = time.strftime("%Y-%m-%d_%H-%M", time.localtime())
@@ -50,7 +50,7 @@ y_data = np.load(f"{BASE_PATH}_{PH}ph_{FH}fh_y_train_{TEST_SIZE}.npy")
 count = 0
 results = []
 for n_models in N_MODELS:
-    for max_features in MAX_FEATURES:
+    for max_depth in MAX_DEPTH:
         print(count)
 
         # Set model parameters
@@ -59,7 +59,7 @@ for n_models in N_MODELS:
         params = dict(
             # Forest parameters
             n_models=n_models,
-            max_features=max_features,
+            max_features="sqrt",
             aggregation_method="median",  # TODO decide
             lambda_value=6,  # TEMP
             metric=None,  # None -> MSE
@@ -68,7 +68,7 @@ for n_models in N_MODELS:
             warning_detector=None,  # ADWIN(0.01)
             # Tree parameters
             grace_period=50,  # TEMP
-            max_depth=None,  # TEMP
+            max_depth=max_depth,
             delta=0.01,  # TEMP
             tau=0.05,  # TEMP
             leaf_prediction="adaptive",  # TEMP
