@@ -155,16 +155,23 @@ for n_models in N_MODELS:
 
         params["optimizer"] = optimizer_log
         params["loss"] = loss_log
-        results.append(dict(
+        result = dict(
             pmae_mean=pmae_mean,
             pmae_std=pmae_std,
             pmape_mean=pmape_mean,
             pmape_std=pmape_std,
             duration=duration,
             params=params,
-        ))
+        )
+        results.append(result)
 
         count += 1
+
+        # Write results
+        if not os.path.exists(os.path.dirname(OUT_PATH)):
+            os.makedirs(os.path.dirname(OUT_PATH))
+        with open(f"{OUT_PATH}_porsi={count}", "w") as f:
+            json.dump(result, f)
 
 # Write results
 if not os.path.exists(os.path.dirname(OUT_PATH)):
