@@ -28,16 +28,9 @@ FH = 10  # For "Variable"
 MODEL_CODE = "oselm2"
 N_NEURONS = [20, 50, 100, 150, 200]
 ACTIVATION_FUNCTIONS = [
-    "tanh",
     "sine",
     "tribas",
-    "inv_tribas",
-    "sigmoid",
-    "hardlim",
-    "softlim",
     "gaussian",
-    "multiquadric",
-    "inv_multiquadric"
 ]
 INITIAL_TRAIN_FACTORS = [1]
 ALPHA = 0.99
