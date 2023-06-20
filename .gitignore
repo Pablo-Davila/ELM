@@ -131,6 +131,7 @@ dmypy.json
 # Directories
 .vscode/
 data/
+data2/
 models/
 results/
 
