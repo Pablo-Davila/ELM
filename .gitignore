@@ -134,6 +134,7 @@ data/
 data2/
 models/
 results/
+results2/
 
 # Files
 *.code-workspace
