@@ -92,9 +92,12 @@ for fh in FH:
                 # Test model
                 y_pred = model.predict(x_test)
 
-                _mae = np.mean(mae(max_value*y_test, max_value*y_pred))
-                _mape = np.mean(mape(max_value*y_test, max_value*y_pred))
-                _rmse = np.mean(rmse(max_value*y_test, max_value*y_pred))
+                y_test = y_test*(max_value - min_value) + min_value
+                y_pred = y_pred*(max_value - min_value) + min_value
+
+                _mae = np.mean(mae(y_test, y_pred))
+                _mape = np.mean(mape(y_test, y_pred))
+                _rmse = np.mean(rmse(y_test, y_pred))
 
                 # Output results
                 print(
