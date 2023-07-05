@@ -24,13 +24,8 @@ def mape(y: Union[np.ndarray, Dict], o: Union[np.ndarray, Dict]) -> float:
     assert y.ndim == 1 or y.ndim == 2 and y.shape[0] == 1
     assert o.ndim == 1 or o.ndim == 2 and o.shape[0] == 1
 
-    # TEMP Find a better solution for zero divisions
     res = np.abs((y-o) / y)
-    res = np.where(
-        res == np.Infinity,
-        np.zeros_like(res),
-        res,
-    )
+    
     return 100 * np.mean(res)
 
 

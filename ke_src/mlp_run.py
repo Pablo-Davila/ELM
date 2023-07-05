@@ -68,7 +68,7 @@ for fh in FH:
                     solver='adam',
                     alpha=0.0001,
                     batch_size=512,
-                    learning_rate_init=learning_rate_init,  # TODO
+                    learning_rate_init=learning_rate_init,
                     max_iter=50,  # epochs
                     shuffle=True,
                     random_state=random.randrange(1000),

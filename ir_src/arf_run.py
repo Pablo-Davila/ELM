@@ -60,29 +60,29 @@ for n_models in N_MODELS:
             # Forest parameters
             n_models=n_models,
             max_features="sqrt",
-            aggregation_method="median",  # TODO decide
-            lambda_value=6,  # TEMP
+            aggregation_method="median",
+            lambda_value=6,
             metric=None,  # None -> MSE
-            disable_weighted_vote=True,  # TEMP
+            disable_weighted_vote=True,
             drift_detector=None,  # ADWIN(0.001)
             warning_detector=None,  # ADWIN(0.01)
             # Tree parameters
-            grace_period=50,  # TEMP
+            grace_period=50,
             max_depth=max_depth,
-            delta=0.01,  # TEMP
-            tau=0.05,  # TEMP
-            leaf_prediction="adaptive",  # TEMP
+            delta=0.01,
+            tau=0.05,
+            leaf_prediction="adaptive",
             leaf_model=None,  # linear regression
-            model_selector_decay=0.95,  # TEMP
+            model_selector_decay=0.95,
             nominal_attributes=None,
             splitter=None,
-            min_samples_split=5,  # TEMP
+            min_samples_split=5,
             binary_split=False,
-            max_size=500.0,  # TEMP
+            max_size=500.0,
             memory_estimate_period=20_000,
-            stop_mem_management=False,  # TEMP
+            stop_mem_management=False,
             remove_poor_attrs=False,
-            merit_preprune=True,  # TEMP
+            merit_preprune=True,
             seed=random.randrange(1000),
         )
 

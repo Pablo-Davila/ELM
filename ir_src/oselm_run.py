@@ -54,14 +54,6 @@ for n_neurons in N_NEURONS:
             n_input_nodes=x_data.shape[1],
             n_hidden_nodes=n_neurons,
             n_output_nodes=FH,
-            # TEMP activation options:
-            # Default: sigmoid',
-            # Could implement: "lin", "sigm", "tanh", "rbf_l1",
-            # "rbf_l2","rbf_linf"
-            # TEMP loss options:
-            # Default: mean_squared_error
-            # Could implement: 'mean_absolute_error',
-            # 'categorical_crossentropy', 'binary_crossentropy'
         )
 
         # Build model
