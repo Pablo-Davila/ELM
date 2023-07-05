@@ -10,7 +10,7 @@ def rmse(y: np.ndarray, o: np.ndarray) -> float:
     ):
         return np.sqrt(np.sum((y-o)**2) / len(y))
     elif y.ndim == 2 and o.ndim == 2:
-        n = len(y)
+        n = y.shape[1]
         return np.apply_along_axis(
             lambda r: np.sqrt(np.sum(r**2) / n),
             1,
